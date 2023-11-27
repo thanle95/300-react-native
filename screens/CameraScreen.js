@@ -2,13 +2,13 @@ import { Camera, CameraType, FlashMode } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { useEffect, useRef, useState } from "react";
 import {
-  Button,
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import Button from '../components/Button'
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState(
@@ -53,7 +53,7 @@ export default function CameraScreen() {
   if (!hasCameraPermission) return <Text>No access to camera</Text>;
 
   return (
-    <View className="flex-1">
+    <View className="flex-1 bg-black">
       {!image ? (
         <Camera
           className="flex-1 w-screen pb-20 rounded-3xl"
@@ -61,10 +61,25 @@ export default function CameraScreen() {
           flashMode={flash}
           ref={cameraRef}
         >
-            <View  className="flex flex-row justify-between px-20">
-                <Button title="Change" icon="retweet" onPress={()=> setType(type === CameraType.back? CameraType.front: CameraType.back)}/>
-                <Button title="Flash" icon="flash" color={flash === FlashMode.off? 'gray': '#f1f1f1'} onPress={()=> setFlash(flash === FlashMode.off? FlashMode.on: FlashMode.off)}/>
-            </View>
+          <View className="flex flex-row justify-between px-20">
+            <Button
+              title=""
+              icon="retweet"
+              onPress={() =>
+                setType(
+                  type === CameraType.back ? CameraType.front : CameraType.back
+                )
+              }
+            />
+            <Button
+              title=""
+              icon="flash"
+              color={flash === FlashMode.off ? "gray" : "#f1f1f1"}
+              onPress={() =>
+                setFlash(flash === FlashMode.off ? FlashMode.on : FlashMode.off)
+              }
+            />
+          </View>
         </Camera>
       ) : (
         <Image
@@ -72,19 +87,19 @@ export default function CameraScreen() {
           className="flex-1 w-screen pb-20 rounded-3xl"
         ></Image>
       )}
-      <View>
+      <View className="flex flex-row justify-between items-center px-20">
         {image ? (
           <View className="flex flex-row justify-between px-20">
             <Button
-              title="Re-take"
+              title=""
               icon="retweet"
               onPress={() => setImage(null)}
             />
-            <Button title="Save" icon="check" onPress={saveImage}/>
+            <Button title="Save" icon="check" onPress={saveImage} />
           </View>
         ) : (
           <Button
-            title="Take a picture"
+            title=""
             icon="camera"
             onPress={takePicture}
           ></Button>
