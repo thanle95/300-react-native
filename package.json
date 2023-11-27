@@ -9,7 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
+    "@rneui/base": "github:react-native-elements/react-native-elements#base",
+    "@rneui/themed": "^0.0.0-edge.2",
     "expo": "~49.0.15",
+    "expo-camera": "~13.4.4",
+    "expo-media-library": "~15.4.1",
     "expo-status-bar": "~1.6.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
