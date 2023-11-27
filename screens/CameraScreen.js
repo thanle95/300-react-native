@@ -3,6 +3,7 @@ import * as MediaLibrary from "expo-media-library";
 import { useEffect, useRef, useState } from "react";
 import {
   Image,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -53,10 +54,10 @@ export default function CameraScreen() {
   if (!hasCameraPermission) return <Text>No access to camera</Text>;
 
   return (
-    <View className="flex-1 bg-black">
+    <SafeAreaView className="flex-1 bg-black">
       {!image ? (
         <Camera
-          className="flex-1 w-screen pb-20 rounded-3xl"
+          className="flex-1 w-screen pb-20"
           type={type}
           flashMode={flash}
           ref={cameraRef}
@@ -84,7 +85,7 @@ export default function CameraScreen() {
       ) : (
         <Image
           source={{ uri: image }}
-          className="flex-1 w-screen pb-20 rounded-3xl"
+          className="flex-1 w-screen pb-20"
         ></Image>
       )}
       <View className="flex flex-row justify-between items-center px-20">
@@ -105,6 +106,6 @@ export default function CameraScreen() {
           ></Button>
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
